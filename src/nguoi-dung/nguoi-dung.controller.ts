@@ -92,9 +92,9 @@ export class NguoiDungController {
     async chinhSuaThongTinNguoiDung(@Headers() headers: Token, @Param("id") idParam: number, @Body() body: CapNhatNguoiDung): Promise<any> {
         let data = await this.tokenService.checkToken(headers);
         if (data === true) {
-            const { name, email, phone, birth_day, gender, role } = body;
+            const { name, email, pass_word, phone, birth_day, gender, role } = body;
             return this.nguoiDungService.chinhSuaThongTinNguoiDung(
-                Number(idParam), name, email, phone, birth_day, gender, role)
+                Number(idParam), name, email, pass_word, phone, birth_day, gender, role)
         } else {
             return this.tokenService.checkToken(headers)
         }

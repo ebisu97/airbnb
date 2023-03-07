@@ -293,7 +293,7 @@ export class NguoiDungService {
     }
 
     // chỉnh sửa thông tin theo id
-    async chinhSuaThongTinNguoiDung(idParam: number, name: string, email: string, phone: string, birth_day: string, gender: string, role: string): Promise<any> {
+    async chinhSuaThongTinNguoiDung(idParam: number, name: string, email: string, pass_word:string, phone: string, birth_day: string, gender: string, role: string): Promise<any> {
         let jsonDate = (new Date()).toJSON();
 
         let checkId = await this.prisma.nguoiDung.findFirst({
@@ -327,7 +327,7 @@ export class NguoiDungService {
 
             await this.prisma.nguoiDung.update({
                 data: {
-                    name, email, phone, birth_day, gender, role
+                    name, email, pass_word, phone, birth_day, gender, role
                 },
                 where: {
                     id: Number(idParam)
